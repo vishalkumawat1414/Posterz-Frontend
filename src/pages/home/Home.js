@@ -10,11 +10,10 @@ function Home() {
 	const categories = useSelector((state) => state.categoryReducer.categories);
 	const [topProducts, setTopProducts] = useState(null);
 
-	async function fetchData() {
+	async function fetchData() { 
 		const topProductsResponse = await axiosClient.get(
-			"/products?filters[isTopPick][$eq]=true&populate=image"
+			"/api/products?filters[isTopPick][$eq]=true&populate=image"
 		);
-
 		setTopProducts(topProductsResponse.data.data);
 	}
 

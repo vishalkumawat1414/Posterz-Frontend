@@ -26,10 +26,10 @@ function Collection() {
 	const [sortBy, setSortBy] = useState(sortOptions[0].sort);
 
 	async function fetchProducts() {
-		const url = params.categoryId
-			? `/products?populate=image&filters[category][key][$eq]=${params.categoryId}&sort=${sortBy}`
-			: `/products?populate=image&sort=${sortBy}`;
-		const response = await axiosClient.get(url);
+		const url = await params?.categoryId
+			? `/api/products?populate=image&filters[category][key][$eq]=${params?.categoryId}&sort=${sortBy}`
+			: `/api/products?populate=image&sort=${sortBy}`;
+		const response = await axiosClient?.get(url);
 		setProducts(response.data.data);
 	}
 

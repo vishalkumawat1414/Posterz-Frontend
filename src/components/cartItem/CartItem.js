@@ -9,19 +9,19 @@ function CartItem({ cart }) {
 	return (
 		<div className='CartItem'>
 			<div className='item-img'>
-				<img src={cart.image} alt='' />
+				<img src={cart?.image} alt='' />
 			</div>
 			<div className='item-info-wrapper'>
 				<div className='item-info'>
-					<p className='title'>{cart.title}</p>
-					<p className='price'>₹ {cart.price}</p>
+					<p className='title'>{cart?.title}</p>
+					<p className='price'>₹ {cart?.price}</p>
 					<div className='quantity-selector'>
 						<span
 							className='btn decrement'
 							onClick={() => dispatch(removeFromCart(cart))}>
 							-
 						</span>
-						<span className='quantity'>{cart.quantity}</span>
+						<span className='quantity'>{cart?.quantity}</span>
 						<span
 							className='btn increment'
 							onClick={() => dispatch(addToCart(cart))}>
@@ -29,7 +29,7 @@ function CartItem({ cart }) {
 						</span>
 					</div>
 					<p className='total-price'>
-						Subtotal: ₹ {cart.quantity * cart.price}
+						Subtotal: ₹ {cart?.quantity * cart?.price}
 					</p>
 				</div>
 				<div className='item-remove' onClick={() => dispatch(resetCart(cart))}>

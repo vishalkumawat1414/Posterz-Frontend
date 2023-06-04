@@ -14,11 +14,11 @@ function ProductDetail() {
 
 	const cart = useSelector((state) => state.cartReducer.cart);
 	const quantity =
-		cart.find((item) => item.key === params.productId)?.quantity || 0;
+		cart?.find((item) => item.key === params?.productId)?.quantity || 0;
 
 	async function fetchData() {
 		const productResponse = await axiosClient.get(
-			`/products?filters[key][$eq]=${params.productId}&populate=*`
+			`/api/products?filters[key][$eq]=${params?.productId}&populate=*`
 		);
 		if (productResponse.data.data.length > 0) {
 			setProduct(productResponse.data.data[0]);
@@ -40,7 +40,7 @@ function ProductDetail() {
 				<div className='product-layout'>
 					<div className='product-img'>
 						<img
-							src={product?.attributes.image.data.attributes.url}
+							src={product?.attributes?.image?.data?.attributes?.url}
 							alt='product img'
 						/>
 					</div>

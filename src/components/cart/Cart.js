@@ -16,7 +16,7 @@ function Cart({ onClose }) {
 
 	async function handleCheckout() {
 		try {
-			const response = await axiosClient.post("/orders", {
+			const response = await axiosClient.post("/api/orders", {
 				products: cart,
 			});
 
@@ -27,7 +27,6 @@ function Cart({ onClose }) {
 				sessionId: response.data.stripeId,
 			});
 
-			console.log("stripe data", data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -45,7 +44,7 @@ function Cart({ onClose }) {
 				</div>
 				<div className='cart-items'>
 					{cart.map((item) => (
-						<CartItem key={item.key} cart={item} />
+						<CartItem key={item?.key} cart={item} />
 					))}
 				</div>
 				{isCartEmpty && (
